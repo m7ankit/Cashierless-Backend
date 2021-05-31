@@ -15,4 +15,5 @@ exports.isSignedin = expressJwt({
     secret: process.env.SECRET,
     //By default, the decoded token is attached to req.user but can be configured with the requestProperty option.
     userProperty: "auth"
+        //We can get it by request.auth - _id, iat 
 })
