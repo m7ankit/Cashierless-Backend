@@ -19,7 +19,6 @@ var userSchema = new mongoose.Schema({
     lastname: {
         type: String,
         maxlength: 32,
-        trim: true,
     },
     email: {
         type: String,

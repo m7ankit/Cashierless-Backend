@@ -43,7 +43,7 @@ exports.signin = (req, res) => {
     User.findOne({ email }, (err, user) => {
         if (err) {
             return res.status(500).json({
-                error: "Error"
+                error: "error"
             })
         }
 
