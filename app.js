@@ -5,8 +5,11 @@ const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const authRoutes = require("./routes/auth");
 var { isUnauthorized } = require("./middlewares/auth")
+
+//Routes
+const authRoutes = require("./routes/auth");
+const userRoutes = require("./routes/user");
 
 //DB Connection
 mongoose
@@ -29,8 +32,9 @@ app.use(cookieParser());
 app.use(cors());
 
 
-//My Routes
+//Routes
 app.use("/api", authRoutes);
+app.use("/api", userRoutes);
 
 //Custom middleware for error handling in express-jwt
 app.use(isUnauthorized);
