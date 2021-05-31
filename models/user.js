@@ -2,6 +2,13 @@ var mongoose = require("mongoose");
 const crypto = require("crypto");
 const uuidv1 = require("uuid/v1");
 
+/*
+userSchema Role description:
+0- Customer
+1- Guard
+2- Manager
+ */
+
 var userSchema = new mongoose.Schema({
     firstname: {
         type: String,

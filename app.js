@@ -5,8 +5,8 @@ const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-
 const authRoutes = require("./routes/auth");
+var { isUnauthorized } = require("./middlewares/auth")
 
 //DB Connection
 mongoose
@@ -19,18 +19,21 @@ mongoose
         console.log("DB CONNECTED");
     })
     .catch((err) => {
-            console.log(err)
-        }
+        console.log(err)
+    });
 
-    );
 
 //Middlewares
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 
+
 //My Routes
 app.use("/api", authRoutes);
+
+//Custom middleware for error handling in express-jwt
+app.use(isUnauthorized);
 
 //PORT
 const port = process.env.PORT || 8000;
