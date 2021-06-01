@@ -65,7 +65,7 @@ exports.updateCategory = (req, res) => {
 }
 
 exports.deleteCategory = (req, res) => {
-    const category = req.category;
+    let category = req.category;
     category.remove((err, category) => {
         if (err) {
             return res.status(400).json({
