@@ -1,6 +1,6 @@
 const Product = require("../models/product")
 
-exports.getProductCategoryById = (req, res, next, id) => {
+exports.getProductById = (req, res, next, id) => {
     Product.findById(id)
         .populate("category")
         .exec((err, product) => {
