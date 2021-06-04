@@ -21,6 +21,11 @@ const OrderSchema = new mongoose.Schema({
     },
     address: String,
     updated: Date,
+    status: {
+        type: String,
+        default: "pending verification",
+        enum: ["pending verification", "verified", "issue"]
+    },
     user: {
         type: ObjectId,
         ref: "User"
