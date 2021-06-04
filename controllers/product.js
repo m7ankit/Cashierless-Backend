@@ -96,9 +96,7 @@ exports.updateProduct = (req, res) => {
         // updating with lodash
         let product = req.product;
         product = _.extend(product, fields)
-
-        let product = new Product(fields);
-        //300Kb max size default
+            //300Kb max size default
         if (file.photo) {
             if (file.photo.size > (process.env.MAX_IMAGE_SIZE || 300000)) {
                 return res.status(400).json({
