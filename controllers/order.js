@@ -44,3 +44,13 @@ exports.updateStatus = (req, res) => {
     }
   );
 };
+
+exports.getOrderDetails = (req, res) => {
+  if (req.order) {
+    return res.status(200).json(req.order);
+  } else {
+    return res.status(400).json({
+      error: "Order not found",
+    });
+  }
+};

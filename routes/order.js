@@ -14,6 +14,7 @@ const {
   getAllOrders,
   getOrderStatus,
   updateStatus,
+  getOrderDetails,
 } = require("../controllers/order");
 const { getOrderById } = require("../middlewares/order");
 
@@ -37,6 +38,9 @@ router.get(
   isManager,
   getOrderStatus
 );
+
+// Get order details
+router.get("/order/:orderId", getOrderDetails);
 
 // Admin can change status of orders
 router.put(
