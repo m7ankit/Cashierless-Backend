@@ -43,13 +43,7 @@ router.get(
 router.get("/order/:orderId", getOrderDetails);
 
 // Admin can change status of orders
-router.put(
-  "/order/status/:userId",
-  isSignedin,
-  isAuthenticated,
-  isManager,
-  updateStatus
-);
+router.put("/order/status", isSignedin, isAuthenticated, updateStatus);
 
 //create a new order createOrder
 router.post(
