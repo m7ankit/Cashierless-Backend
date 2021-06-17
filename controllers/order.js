@@ -31,7 +31,7 @@ exports.getOrderStatus = (req, res) => {
 };
 
 exports.updateStatus = (req, res) => {
-  Order.update(
+  Order.updateOne(
     { _id: req.body.orderId },
     { $set: { status: req.body.status } },
     (err, order) => {
@@ -43,4 +43,14 @@ exports.updateStatus = (req, res) => {
       return res.json(order);
     }
   );
+};
+
+exports.getOrderDetails = (req, res) => {
+  if (req.order) {
+    return res.status(200).json(req.order);
+  } else {
+    return res.status(400).json({
+      error: "Order not found",
+    });
+  }
 };

@@ -14,6 +14,7 @@ const {
   getAllOrders,
   getOrderStatus,
   updateStatus,
+  getOrderDetails,
 } = require("../controllers/order");
 const { getOrderById } = require("../middlewares/order");
 
@@ -38,14 +39,11 @@ router.get(
   getOrderStatus
 );
 
+// Get order details
+router.get("/order/:orderId", getOrderDetails);
+
 // Admin can change status of orders
-router.put(
-  "/order/status/:userId",
-  isSignedin,
-  isAuthenticated,
-  isManager,
-  updateStatus
-);
+router.put("/order/status", isSignedin, updateStatus);
 
 //create a new order createOrder
 router.post(
