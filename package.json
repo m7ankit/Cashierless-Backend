@@ -4,7 +4,8 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "start": "nodemon app.js"
+        "start": "node app.js",
+        "dev": "nodemon app.js"
     },
     "keywords": [],
     "author": "",
@@ -23,13 +24,14 @@
         "lodash": "^4.17.15",
         "mongoose": "^5.7.7",
         "morgan": "^1.9.1",
-        "nodemon": "^1.19.4",
         "npm": "^6.13.0",
+        "socket.io": "^4.1.2",
         "stripe": "^8.155.0",
         "uuid": "^3.3.3"
     },
     "devDependencies": {
         "eslint": "^7.27.0",
+        "nodemon": "^2.0.7",
         "prettier": "^2.3.0"
     }
 }
