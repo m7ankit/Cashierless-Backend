@@ -77,3 +77,33 @@ exports.signout = (req, res) => {
     message: "You are signed out",
   });
 };
+
+exports.googleSignin = (req, res) => {
+  // We need only 1 fields for auth
+  const { email } = req.body;
+
+  //findOne() will give the first user
+  User.findOne({ email }, (err, user) => {
+    if (err) {
+      return res.status(500).json({
+        error: "error",
+      });
+    }
+
+    if (!user) {
+      return res.status(401).json({
+        error: "user with given email does not exist.",
+      });
+    }
+
+    // Token Creation
+    const token = jwt.sign({ _id: user._id }, process.env.SECRET);
+
+    //Put token in cookies
+    res.cookie("token", token, { expire: new Date() + 9999 });
+
+    //response to user
+    const { _id, firstname, email, role } = user;
+    return res.json({ token, user: { _id, name: firstname, email, role } });
+  });
+};
